@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import com.lms.constants.Constants;
-import com.lms.dao.User;
+import com.lms.entities.User;
 import com.lms.operations.Login;
 
 public class AdminPortal {

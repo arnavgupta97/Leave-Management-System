@@ -3,8 +3,8 @@ package com.lms.operations;
 import java.util.Scanner;
 
 import com.lms.constants.Constants;
-import com.lms.dao.User;
-import com.lms.data.source.DataSource;
+import com.lms.entities.User;
+import com.lms.datasource.DataSource;
 import com.lms.portal.AdminPortal;
 import com.lms.portal.EmployeePortal;
 import com.lms.portal.ManagerPortal;
