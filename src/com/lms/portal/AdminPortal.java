@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import com.lms.constants.Constants;
-import com.lms.entities.User;
+import com.lms.entities.Employee;
 import com.lms.operations.Login;
 
 public class AdminPortal {
@@ -132,7 +132,7 @@ public class AdminPortal {
 		System.out.print("Enter Employee Email to Add: ");
 		String email = sc.next();
 
-		User employee = new User(name, password, contact, email);
+		Employee employee = new Employee(name, password, contact, email);
 		employee.setUserRole(Constants.EMPLOYEE);
 
 		String SQL = "INSERT INTO employee(id,name,password,contact,email) VALUES(?,?,?,?,?)";
