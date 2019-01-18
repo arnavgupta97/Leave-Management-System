@@ -3,7 +3,7 @@ package com.lms.operations;
 import java.util.Scanner;
 
 import com.lms.constants.Constants;
-import com.lms.entities.User;
+import com.lms.entities.Employee;
 import com.lms.datasource.DataSource;
 import com.lms.portal.AdminPortal;
 import com.lms.portal.EmployeePortal;
@@ -34,14 +34,14 @@ public class Login {
 				ch = scanner.nextInt();
 				switch (ch) {
 				case 1:
-					User admin = new User("admin", "admin", 452145, "admin@abyeti.com");
+					Employee admin = new Employee("admin", "admin", 452145, "admin@abyeti.com");
 					DataSource.currentLoggedInUser = admin;
 					DataSource.currentLoggedInUser.setUserRole(Constants.ADMIN);
 					adminPortal.loginAmdin();
 					break;
 				case 2:
 					
-					User manager = new User("manager", "manager", 452145, "manager@abyeti.com");
+					Employee manager = new Employee("manager", "manager", 453145, "manager@abyeti.com");
 					DataSource.currentLoggedInUser = manager;
 					DataSource.currentLoggedInUser.setUserRole(Constants.MANAGER);
 					managerPortal.loginManager();
