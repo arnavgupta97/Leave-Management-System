@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<style>
+body {
+	background-color: #cdd3c4;
+	text-align: center;
+	margin: 80px;
+}
+div{
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+	<h2 id="header" class="loginform">ADMIN HOME PAGE</h2>
+				<form>
+					<div>
+						<a href="addEmployee.html"><button type="button" class="btn btn-info">ADD EMPLOYEE</button></a>
+					</div>
+					<div >
+						<a href="deleteEmployee.html"><button type="button" class="btn btn-info">DELETE EMPLOYEE</button></a>
+					</div>
+					<div >
+						<a href="listEmployee.html"><button type="button" class="btn btn-info">LIST ALL EMPLOYEE</button> </a>
+					</div>
+					<div >	
+						<button type="button" class="btn btn-success" onclick="myFunction()">LOG OUT</button>
+					</div>
+				</form>
+	<script>
+	function myFunction(){
+		 window.location.href ="http://localhost:8080/messenger/index.html";
+		 sessionStorage.clear();
+	} 
+	</script>
+</body>
+</html>
