@@ -9,7 +9,7 @@ function updateDetails(){
             contact: null,
             email: ""
         },
-        url:'http://localhost:8080/messenger/webapi/employee/update'
+        url:'/messenger/webapi/employee/update'
     });
    var employee = new EmployeeModel();
    
@@ -27,6 +27,6 @@ function updateDetails(){
    });
 }
 function logout(){
-	 window.location.href ="http://localhost:8080/messenger/index.html";
+	 window.location.href ="/messenger/index.html";
 	 localStorage.clear();
 }

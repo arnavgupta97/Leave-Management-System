@@ -39,7 +39,7 @@ div{
 		    });
 		 var EmployeeCollection = Backbone.Collection.extend ({
 			 model: EmployeeModel,
-			 url:'http://localhost:8080/messenger/webapi/admin'
+			 url:'/messenger/webapi/admin'
 		 });
 		
 		 var employeeCollection = new EmployeeCollection();
@@ -55,17 +55,17 @@ div{
 		        		  
 			        	if(res.get('userrole')=="administrator"){
 			        	  
-			        	  window.location.href ="http://localhost:8080/messenger/admin/adminPortal.html"
+			        	  window.location.href ="/messenger/admin/adminPortal.html"
 			        	  sessionStorage.setItem("Id",id);
 			        	  
 			          }else if(res.get('userrole')=="manager"){
 			        	  
-			        	  window.location.href ="http://localhost:8080/messenger/manager/ManagerPortal.html"
+			        	  window.location.href ="/messenger/manager/ManagerPortal.html"
 			        		  sessionStorage.setItem("Id",id);
 			        	  
 			          }else if (res.get('userrole')=="employee"){
 			        	  
-			        	  window.location.href ="http://localhost:8080/messenger/employee/EmployeePortal.html"
+			        	  window.location.href ="/messenger/employee/EmployeePortal.html"
 			        	  sessionStorage.setItem("Id",id);
 			          }
 			      } else{

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -34,20 +35,14 @@ public class ManagerResource {
 		return project;
 	}
 
-//	@PUT
-//	@Path("rejectLeave")
-//	public Leave rejectLeaves() {
-//		ManagerDao manager = new ManagerDao();
-//		return manager.rejectLeave();
-//	}
-
-	@PUT
+	@POST
+	@Path("approve")
 	public Leave approveLeaves() {
 		ManagerDao manager = new ManagerDao();
 		return manager.approveLeave();
 	}
 
-	@PUT
+	@POST
 	@Path("assignProject")
 	public Project assignProjects(Employee employee) {
 		

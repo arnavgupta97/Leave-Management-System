@@ -7,7 +7,7 @@ var EmployeeModel = Backbone.Model.extend({
 				contact : null,
 				email : ""
 			},
-			url : 'http://localhost:8080/messenger/webapi/admin/addEmployee'
+			url : '/messenger/webapi/admin/addEmployee'
 		});
 
 		var EmployeeView = Backbone.View

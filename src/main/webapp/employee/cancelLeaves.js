@@ -3,12 +3,12 @@ function cancelLeaves() {
 		defaults : {
 			id : null
 		},
-		url : 'http://localhost:8080/messenger/webapi/employee'
+		url : '/messenger/webapi/employee'
 	});
 
 	var LeaveCollection = Backbone.Collection.extend({
 		model : LeaveModel,
-		url : 'http://localhost:8080/messenger/webapi/employee'
+		url : '/messenger/webapi/employee'
 	});
 
 	var leave = new LeaveCollection();

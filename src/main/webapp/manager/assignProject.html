@@ -27,7 +27,7 @@ div {
 						projectname : "",
 						id : ""
 					},
-					url : 'http://localhost:8080/messenger/webapi/manager/assignProject'
+					url : '/messenger/webapi/manager/assignProject'
 				});
 
 		var ProjectView = Backbone.View
@@ -50,7 +50,7 @@ div {
 								"projectName": projectname,
 								"projectManagerId": projectmanagerid
 							}]
-						});
+						}, { type: 'POST' });
 						this.model.toJSON();
 					},
 					render : function() {
