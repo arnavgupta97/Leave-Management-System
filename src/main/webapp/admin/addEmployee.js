@@ -13,7 +13,7 @@ var EmployeeModel = Backbone.Model.extend({
 		var EmployeeView = Backbone.View
 				.extend({
 					template : _
-							.template('<form><input name="id" value="<%=id %>"><input name="name" value="<%=name %>"><input name="password" value="<%= password %>"><input name="userrole" value="<%= userrole %>"><input name="contact" value="<%= contact %>"><input name="email" value="<%= email %>"><button>Save</button></form>'),
+							.template('<h2 id="header">ADD EMPLOYEE</h2><form><input name="id" placeholder="Enter Id" value="<%=id %>"><input name="name" placeholder="Enter Name" value="<%=name %>"><input name="password" placeholder="Enter Password" value="<%= password %>"><input name="userrole" placeholder="Enter Userrole" value="<%= userrole %>"><input name="contact" placeholder="Enter Contact" value="<%= contact %>"><input name="email" placeholder="Email" value="<%= email %>"><button>Save</button></form>'),
 					events : {
 						submit : 'save'
 					},
@@ -26,14 +26,13 @@ var EmployeeModel = Backbone.Model.extend({
 						var contact = Number(this.$('input[name="contact"]')
 								.val());
 						var email = this.$('input[name="email"]').val();
-						this.model.save({
-							id : id,
-							name : name,
-							password : password,
-							userrole : userrole,
-							contact : contact,
-							email : email
-						});
+						this.model.set("id", id);
+						this.model.set("name", name);
+						this.model.set("password", password);
+						this.model.set("userrole", userrole);
+						this.model.set("contact", contact);
+						this.model.set("email", email);
+						this.model.save(null, { type: 'POST' });
 					},
 					render : function() {
 						this.$el.html(this.template(this.model.attributes));

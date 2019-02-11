@@ -6,8 +6,4 @@ function approve(){
 	   var leave =  new LeaveModel();
 	   leave.save();
 }
-
-function logout(){
-	 window.location.href ="/messenger/index.html";
-	 sessionStorage.clear();
-} 
+ 

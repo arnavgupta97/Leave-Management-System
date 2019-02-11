@@ -1,21 +1,40 @@
-//function applyLeave(){
-//	
-//    var leaveModel = Backbone.Model.extend({
-//        defaults: {
-//          noofappliedleaves:null,
-//          startdate:''
-//        },
-//        url:'http://localhost:8080/messenger/webapi/employee/applyLeave/' + localStorage.getItem("Id") + '/' + document.getElementById("days").value
-//        +'/'+ document.getElementById("startdate").value
-//    });
-//   var leave = new leaveModel();
-//   leave.fetch().then(function(){
-//	   if( leave.get('status')=='Pending'){
-//		  // alert("Leaves Already Applied");
-//	   }
-//	   else{
-//		   leave.save();
-//		   alert("Leaves Applied Successfully");
-//	   }   
-//   });
-//}
+var LeaveModel = Backbone.Model.extend({
+	defaults : {
+		id: null,
+		noOfLeavesApplied: null,
+        startDate: ""
+	},
+	url : '/messenger/webapi/employee/applyLeave'
+});
+
+var LeaveView = Backbone.View.extend({
+			template : _
+					.template('<h2 id="header">APPLY FOR LEAVES</h2><form><input name="noOfLeavesApplied" placeholder="leavesToApply" value="<%= noOfLeavesApplied %>"><input name="startDate" placeholder="StartDate" value="<%= startDate %>"><button>Save</button></form>'),
+			events : {
+				submit : 'save'
+			},
+			save : function(e) {
+				e.preventDefault();
+				var id = Number(sessionStorage.getItem("Id"));
+				var noOfLeavesApplied = +this.$('input[name="noOfLeavesApplied"]').val();
+				var startDate = this.$('input[name="startDate"]').val();
+				this.model.save({
+					 "id":id,
+					 "leave":{
+					 	"noOfLeavesApplied":noOfLeavesApplied,
+					 	"startDate":startDate
+					 }
+				});
+				this.model.toJSON();
+			},
+			render : function() {
+				this.$el.html(this.template(this.model.attributes));
+				return this;
+			}
+		});
+var leaveModel = new LeaveModel();
+var leaveView = new LeaveView({
+	model : leaveModel
+});
+
+$(document.body).html(leaveView.render().el);

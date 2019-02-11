@@ -6,6 +6,8 @@
 <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
 <script src="js/underscore.js" type="text/javascript"></script>
 <script src="js/backbone.js" type="text/javascript"></script>
+<script src="credentials.js" type="text/javascript"></script>
+<script src="deleteEmployee.js" type="text/javascript"></script>
 </head>
 <style>
 body {
@@ -13,51 +15,16 @@ body {
 	text-align: center;
 	margin: 80px;
 }
-div{
-  padding: 40px;
-}
 </style>
 </head>
-<body >
-<h2 id="header">DELETE EMPLOYEE</h2>
-<form>
-<label>Enter User ID:</label> <input type="number" id="myid"/><br>
-<button type="button" class="btn btn-primary" onclick="delete_employee()">Submit</button>
-<a href="adminPortal.html"><button type="button" class="btn btn-success" >Go Back</button></a>
-</form>
+<body>
+	<h2 id="header">DELETE EMPLOYEE</h2>
+	<form>
+		<label>Enter User ID:</label> <input type="number" id="myid" /><br>
+		<button type="button" class="btn btn-primary"
+			onclick="delete_employee()">Submit</button>
+		<a href="adminPortal.html"><button type="button"
+				class="btn btn-success">Go Back</button></a>
+	</form>
 </body>
-<script type="text/javascript">
-function delete_employee(){
-	  var EmployeeModel = Backbone.Model.extend({
-			defaults : {
-				id : null,
-				name : "",
-				password : "",
-				userrole : "",
-				contact : null,
-				email : ""
-			},
-			url : '/messenger/webapi/admin'
-		});
-
-	  var EmployeeCollection = Backbone.Collection.extend({
-		  model: EmployeeModel,
-		  url : '/messenger/webapi/admin'
-	  });
-	  
-	var employeeCollection = new EmployeeCollection();
-	  
-	  employeeCollection.fetch().then(function(){
-		 
-		  var id = Number(document.getElementById("myid").value);
-		  var res = employeeCollection.findWhere({'id': id });
-		  console.log(res);
-		  res.destroy({
-			  data: JSON.stringify({'id': id}),
-		  contentType: "application/json"});
-		  
-		 }); 
-	 
-	}
-</script>
 </html>
