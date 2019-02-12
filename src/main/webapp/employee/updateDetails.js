@@ -13,7 +13,7 @@ var EmployeeModel = Backbone.Model.extend({
 var EmployeeView = Backbone.View
 		.extend({
 			template : _
-					.template('<h2 id="header">UPDATE YOUR DETAILS</h2><form><input name="name" placeholder="Name" value="<%=name %>"><input name="password" placeholder="Password" value="<%= password %>"><input name="contact" placeholder="Contact" value="<%= contact %>"><input name="email" placeholder="Email" value="<%= email %>"><button>Save</button></form>'),
+					.template('<h2 id="header">UPDATE YOUR DETAILS</h2><form><input name="name" placeholder="Name" value="<%=name %>" required><br><input name="password" placeholder="Password" value="<%= password %>" required><br><input name="contact" placeholder="Contact" value="<%= contact %>" required><br><input name="email" placeholder="Email" value="<%= email %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]$" required><br><button>Save</button></form>'),
 			events : {
 				submit : 'save'
 			},
@@ -21,8 +21,7 @@ var EmployeeView = Backbone.View
 				e.preventDefault();
 				var name = this.$('input[name="name"]').val();
 				var password = this.$('input[name="password"]').val();
-				var contact = Number(this.$('input[name="contact"]')
-						.val());
+				var contact = Number(this.$('input[name="contact"]').val());
 				var email = this.$('input[name="email"]').val();
 				this.model.save({
 					id : Number(sessionStorage.getItem("Id")),
@@ -32,6 +31,7 @@ var EmployeeView = Backbone.View
 					email : email
 				});
 				this.model.toJSON();
+				alert("Your Details Have Been Updated Successfully");
 			},
 			render : function() {
 				this.$el.html(this.template(this.model.attributes));

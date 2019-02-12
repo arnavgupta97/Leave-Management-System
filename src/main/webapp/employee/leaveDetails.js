@@ -21,10 +21,10 @@ function leaveDetails() {
 				});
 				// alert(JSON.stringify(res.get("leave")));
 				var leaves = res.get("leave");
-				alert("Leave ID: " + leaves.leaveId + "\n"
-						+ "Days Applied: "+leaves.noOfLeavesApplied + "\n"
-						+ "Reamining Leaves: "+leaves.noOfLeavesRemaining + "\n" 
-						+ "Start Date: "+leaves.startDate + "\n" 
-						+ "Leave Status: "+leaves.status);
+				alert("Leave ID: " + leaves.leaveId + "\n" + "Days Applied: "
+						+ leaves.noOfLeavesApplied + "\n"
+						+ "Reamining Leaves: " + leaves.noOfLeavesRemaining
+						+ "\n" + "Start Date: " + leaves.startDate + "\n"
+						+ "Leave Status: " + leaves.status);
 			});
 }

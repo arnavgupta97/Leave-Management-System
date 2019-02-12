@@ -20,10 +20,12 @@ function cancelLeaves() {
 			'id' : Number(sessionStorage.getItem("Id"))
 		});
 		var leaves = res.get("leave");
-      //  alert(leaves.status);
+		// alert(leaves.status);
 		if (leaves.status == "Pending") {
 
-			leaveModel.set({id : Number(sessionStorage.getItem("Id"))});
+			leaveModel.set({
+				id : Number(sessionStorage.getItem("Id"))
+			});
 			leaveModel.save();
 			alert("Leaves Successfully Cancelled");
 
