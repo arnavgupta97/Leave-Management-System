@@ -27,17 +27,17 @@ function Login(){
 					if(res.get('id')==id  && res.get('password')==password){
 		        		  
 			        	if(res.get('userrole')=="administrator"){
-			        	  
+			        	  alert(res.get('name')+ " Has Logged In succesfully");
 			        	  window.location.href ="/messenger/admin/adminPortal.html"
 			        	  sessionStorage.setItem("Id",id);
 			        	  
 			          }else if(res.get('userrole')=="manager"){
-			        	  
+			        	  alert(res.get('name')+ " Has Logged In succesfully");
 			        	  window.location.href ="/messenger/manager/ManagerPortal.html"
 			        		  sessionStorage.setItem("Id",id);
 			        	  
 			          }else if (res.get('userrole')=="employee"){
-			        	  
+			        	  alert(res.get('name')+ " Has Logged In succesfully");
 			        	  window.location.href ="/messenger/employee/EmployeePortal.html"
 			        	  sessionStorage.setItem("Id",id);
 			          }

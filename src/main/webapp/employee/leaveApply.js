@@ -10,7 +10,7 @@ var LeaveModel = Backbone.Model.extend({
 var LeaveView = Backbone.View
 		.extend({
 			template : _
-					.template('<h2 id="header">APPLY FOR LEAVES</h2><form><input name="noOfLeavesApplied" placeholder="Number of Days" value="<%= noOfLeavesApplied %>" required><br><input name="startDate" placeholder="Start Date" value="<%= startDate %>" required><br><button>Save</button></form>'),
+					.template('<h2 id="header">APPLY FOR LEAVES</h2><form><input name="noOfLeavesApplied" placeholder="Number of Days" value="<%= noOfLeavesApplied %>" required><br><input type="date" name="startDate" placeholder="Start Date" value="<%= startDate %>" required><br><button>Save</button></form>'),
 			events : {
 				submit : 'save'
 			},

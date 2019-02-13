@@ -3,5 +3,5 @@ if(sessionStorage.getItem("Id")==null){
 }
 function logout(){
 	 window.location.href ="/messenger/index.html";
-	 localStorage.clear();
+	 sessionStorage.clear();
 }

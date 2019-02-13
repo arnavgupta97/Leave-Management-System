@@ -10,7 +10,7 @@ var ProjectModel = Backbone.Model.extend({
 var ProjectView = Backbone.View
 		.extend({
 			template : _
-					.template('<h2 id="header">ASSIGN PROJECT</h2><form><input name="projectmanagerid" placeholder="Manager ID" value="<%= projectmanagerid %>" required><input name="projectname" placeholder="Project Name" value="<%= projectname %>" required><input name="id" placeholder="Employee ID" value="<%= id %>" required><button>Save</button></form>'),
+					.template('<h2 id="header">ASSIGN PROJECT</h2><form><input name="projectmanagerid" placeholder="Manager ID" value="<%= projectmanagerid %>" required><br><input name="projectname" placeholder="Project Name" value="<%= projectname %>" required><br><input name="id" placeholder="Employee ID" value="<%= id %>" required><br><button>Save</button></form>'),
 			events : {
 				submit : 'save'
 			},

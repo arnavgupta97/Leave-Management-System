@@ -17,7 +17,7 @@ var EmployeeCollection = Backbone.Collection.extend({
 var ViewAll = Backbone.View.extend({
 	el : '#employee-view',
 	initialize : function() {
-		this.listenTo(this.model, 'sync change', this.render);
+		this.listenTo(this.collection, 'sync change', this.render);
 		this.collection.fetch();
 		this.render();
 	},
@@ -32,7 +32,7 @@ var ViewAll = Backbone.View.extend({
 	}
 });
 var EmployeeView = Backbone.View.extend({
-	// tagName : 'li',
+	
 	template : _.template($('#employee-temp').html()),
 	render : function() {
 		this.$el.html(this.template(this.model.toJSON()));

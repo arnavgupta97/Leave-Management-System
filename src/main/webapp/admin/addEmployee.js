@@ -13,7 +13,7 @@ var EmployeeModel = Backbone.Model.extend({
 var EmployeeView = Backbone.View
 		.extend({
 			template : _
-					.template('<h2 id="header">ADD EMPLOYEE</h2><form><input name="id" placeholder="Enter Id" value="<%=id %>" required><br><input name="name" placeholder="Enter Name" value="<%=name %>" required><br><input name="password" placeholder="Enter Password" value="<%= password %>" required><br><input name="userrole" placeholder="Enter Userrole" value="<%= userrole %>" required><br><input name="contact" placeholder="Enter Contact" value="<%= contact %>" required><br><input name="email" placeholder="Email" value="<%= email %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]$" required><br><button>Save</button></form>'),
+					.template('<h2 id="header">ADD EMPLOYEE</h2><form><input name="id" placeholder="Enter Id" value="<%=id %>" required><br><input name="name" placeholder="Enter Name" value="<%=name %>" required><br><input name="password" placeholder="Enter Password" value="<%= password %>" required><br><input name="userrole" placeholder="Enter Userrole" value="<%= userrole %>" required><br><input name="contact" placeholder="Enter Contact" value="<%= contact %>" required><br><input name="email" placeholder="Email" value="<%= email %>" required><br><button>Save</button></form>'),
 			events : {
 				submit : 'save'
 			},

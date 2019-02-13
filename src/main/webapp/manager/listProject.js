@@ -13,7 +13,7 @@ var ProjectCollection = Backbone.Collection.extend({
 var ViewAll = Backbone.View.extend({
 	el : '#project-view',
 	initialize : function() {
-		this.listenTo(this.model, 'sync change', this.render);
+		this.listenTo(this.collection, 'sync change', this.render);
 		this.collection.fetch();
 		this.render();
 	},

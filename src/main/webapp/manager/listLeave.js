@@ -14,7 +14,7 @@ var LeaveCollection = Backbone.Collection.extend({
 var ViewAll = Backbone.View.extend({
 	el : '#leave-view',
 	initialize : function() {
-		this.listenTo(this.model, 'sync change', this.render);
+		this.listenTo(this.collection, 'sync change', this.render);
 		this.collection.fetch();
 		this.render();
 	},
@@ -30,7 +30,7 @@ var ViewAll = Backbone.View.extend({
 	}
 });
 var LeaveView = Backbone.View.extend({
-	// tagName : 'li',
+	
 	template : _.template($('#leave-temp').html()),
 	render : function() {
 		this.$el.html(this.template(this.model.toJSON()));
