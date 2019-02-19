@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -20,6 +21,7 @@ import com.jersey.entities.Project;
 public class ManagerResource {
 
 	@GET
+	@Path("getLeave")
 	public List<Leave> getLeaves() {
 		ManagerDao manager = new ManagerDao();
 		List<Leave> leave = manager.getLeaveList();
@@ -27,18 +29,29 @@ public class ManagerResource {
 	}
 
 	@GET
-	@Path("getProjects")
+	@Path("getProject")
 	public List<Project> getProjects() {
 		ManagerDao manager = new ManagerDao();
 		List<Project> project = manager.getProjectList();
+		System.out.println(project);
 		return project;
 	}
 
-	@POST
+	@PUT
 	@Path("approve")
-	public Leave approveLeaves() {
+	public Leave approveLeaves(Leave leave) {
 		ManagerDao manager = new ManagerDao();
-		return manager.approveLeave();
+		int leaveId = leave.getLeaveId();
+		System.out.println(leaveId);
+		return manager.approveLeave(leaveId);
+	}
+	@PUT
+	@Path("reject")
+	public Leave rejectLeaves(Leave leave) {
+		ManagerDao manager = new ManagerDao();
+		int leaveId = leave.getLeaveId();
+		System.out.println(leaveId);
+		return manager.rejectLeave(leaveId);
 	}
 
 	@POST

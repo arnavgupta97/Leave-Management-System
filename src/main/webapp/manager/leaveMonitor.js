@@ -1,8 +1,28 @@
-function approve() {
-	alert("Leaves Have Been Monitored Successfully");
+function approve(leaveId) {
 	var LeaveModel = Backbone.Model.extend({
+		defaults : {
+			leaveId : null
+		},
 		url : '/messenger/webapi/manager/approve'
 	});
-	var leave = new LeaveModel();
-	leave.save();
+	var leaveModel = new LeaveModel();
+	leaveModel.save({
+		leaveId : Number(leaveId)
+	},{
+		type : 'PUT'
+	});	
+}
+function reject(leaveId) {
+	var LeaveModel = Backbone.Model.extend({
+		defaults : {
+			leaveId : null
+		},
+		url : '/messenger/webapi/manager/reject'
+	});
+	var leaveModel = new LeaveModel();
+	leaveModel.save({
+		leaveId : Number(leaveId)
+	},{
+		type : 'PUT'
+	});
 }

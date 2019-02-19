@@ -4,23 +4,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@XmlRootElement (name="project")
 public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int projectId;
 	private String projectName;
 	private int projectManagerId;
+	private int employeeId;
 
 	public Project() {		
 	}
 	
-	public Project(String projectName, int projectManagerId) {
+    public Project(String projectName, int projectManagerId, int employeeId ) {
 		this.projectName = projectName;
 		this.projectManagerId = projectManagerId;
+		this.employeeId = employeeId;
+	}
+
+    
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public int getProjectId() {
@@ -50,7 +59,8 @@ public class Project {
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", projectName=" + projectName + ", projectManagerId="
-				+ projectManagerId + "]";
+				+ projectManagerId + ", employeeId="
+						+ employeeId +"]";
 	}
 	
 }

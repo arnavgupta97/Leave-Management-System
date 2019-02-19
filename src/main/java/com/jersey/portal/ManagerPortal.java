@@ -40,10 +40,10 @@ public class ManagerPortal {
                         System.out.println(managerDao.getLeaveList());
 						break;
 					case 2:
-						managerDao.approveLeave();
+//						managerDao.approveLeave();
 						break;
 					case 3:
-						managerDao.rejectLeave();
+//						managerDao.rejectLeave();
 						break;
 					case 4:
 						System.out.println(managerDao.getProjectList());

@@ -26,65 +26,53 @@ public class ManagerDao {
 		return leaveList;
 	}
 
-	public Leave approveLeave() {
+	public Leave approveLeave(int leaveId) {
 
-		List<Leave> leave = getLeaveList();
-        Leave leave2=null;
-		for (Leave leaves : leave) {
-
-			if (leaves.getNoOfLeavesApplied() > 0 && leaves.getNoOfLeavesRemaining() >= 0) {
-				leaves.setStatus("Approved");
-				leaves.setNoOfLeavesApplied(0);
-				leave2=leaves;
-			} else if (leaves.getNoOfLeavesApplied() >= 0 && leaves.getNoOfLeavesRemaining() <= 0) {
-				leaves.setStatus("Rejected");
-				int x = leaves.getNoOfLeavesApplied();
-				int y = leaves.getNoOfLeavesRemaining();
-				leaves.setNoOfLeavesRemaining(x + y);
-				leaves.setNoOfLeavesApplied(0);
-				leave2=leaves;
-			}
+		Leave leave = Login.session.get(Leave.class, leaveId);
+		System.out.println(leave.getStatus());
+		
+		int x = leave.getNoOfLeavesApplied();
+		int y = leave.getNoOfLeavesRemaining();
+		leave.setStatus("Approved");
+		leave.setNoOfLeavesApplied(0);
+		leave.setNoOfLeavesRemaining(x+y);
+					
 			if (Login.session.getTransaction().isActive()) {
-				Login.session.update(leaves);
+				Login.session.update(leave);
 				Login.session.getTransaction().commit();
 			} else {
 				Login.session.beginTransaction();
-				Login.session.update(leaves);
+				Login.session.update(leave);
 				Login.session.getTransaction().commit();
 			}
-		}
-		return leave2;
+		
+		return leave;
 	}
 
-	public Leave rejectLeave() {
+	public Leave rejectLeave(int leaveId) {
 
-		List<Leave> leave = getLeaveList();
-        Leave leave2=null;
-		for (Leave leaves : leave) {
-			if (leaves.getNoOfLeavesApplied() >= 0 && leaves.getNoOfLeavesRemaining() <= 0) {
-				leaves.setStatus("Rejected");
-				int x = leaves.getNoOfLeavesApplied();
-				int y = leaves.getNoOfLeavesRemaining();
-				leaves.setNoOfLeavesRemaining(x + y);
-				leaves.setNoOfLeavesApplied(0);
-				leave2=leaves;
-			}
+		Leave leave = Login.session.get(Leave.class, leaveId);
+		System.out.println(leave);
+		
+		leave.setStatus("Rejected");
+		leave.setNoOfLeavesApplied(0);
+	
 			if (Login.session.getTransaction().isActive()) {
-				Login.session.update(leaves);
+				Login.session.update(leave);
 				Login.session.getTransaction().commit();
 			} else {
 				Login.session.beginTransaction();
-				Login.session.update(leaves);
+				Login.session.update(leave);
 				Login.session.getTransaction().commit();
 			}
-		}
-		return leave2;
+			
+		return leave;
 	}
 
-	public Project assignProject(String projectName, int projectManagerId, int empId) {
-		Project project = new Project(projectName, projectManagerId);
+	public Project assignProject(String projectName, int projectManagerId, int employeeId) {
+		Project project = new Project(projectName, projectManagerId, employeeId);
 
-		Employee employee = Login.session.get(Employee.class, empId);
+		Employee employee = Login.session.get(Employee.class, employeeId);
 
 		if (employee != null) {
 

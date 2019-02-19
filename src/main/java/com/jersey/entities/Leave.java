@@ -4,10 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@XmlRootElement (name="leave")
 public class Leave {
 
 	@Id
@@ -17,17 +15,20 @@ public class Leave {
 	private int noOfLeavesRemaining;
 	private String status;
 	private String startDate;
-
+	private String details;
+    private int employeeId;
 	public Leave() {
 		
 	}
-	public Leave(int noOfLeavesApplied, int noOfLeavesRemaining, String status, String startDate) {
+	public Leave(int employeeId, int noOfLeavesApplied, int noOfLeavesRemaining, String status, String startDate, String details) {
 		this.noOfLeavesApplied = noOfLeavesApplied;
 		this.noOfLeavesRemaining = noOfLeavesRemaining;
 		this.status = status;
 		this.startDate = startDate;
+		this.employeeId = employeeId;
+		this.details = details;
 	}
-
+    
 	public int getLeaveId() {
 		return leaveId;
 	}
@@ -35,7 +36,14 @@ public class Leave {
 	public void setLeaveId(int leaveId) {
 		this.leaveId = leaveId;
 	}
-
+    
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	
 	public void setNoOfLeavesRemaining(int noOfLeavesRemaining) {
 		this.noOfLeavesRemaining = noOfLeavesRemaining;
 	}
@@ -68,11 +76,17 @@ public class Leave {
 		return noOfLeavesRemaining;
 	}
 	
+	public String getDetails() {
+		return details;
+	}
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	
 	@Override
 	public String toString() {
 		return "Leave [leaveId=" + leaveId + ", noOfLeavesApplied=" + noOfLeavesApplied + ", noOfLeavesRemaining="
-				+ noOfLeavesRemaining + ", status=" + status + ", startDate=" + startDate + "]";
+				+ noOfLeavesRemaining + ", status=" + status + ", startDate=" + startDate + ", details=" + details + ", employeeId=" + employeeId +"]";
 	}
-	
 	
 }

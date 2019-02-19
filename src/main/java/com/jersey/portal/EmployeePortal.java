@@ -37,21 +37,21 @@ public class EmployeePortal {
 
 					switch (ch) {
 					case 1: {
-						System.out.println("Enter New Name: ");
-						int days = scanner.nextInt();
-						System.out.println("Enter New Password: ");
-						String startDate = scanner.next();
-						System.out.println(employeeDao.applyForLeave(userid, days, startDate));
+//						System.out.println("Enter New Name: ");
+//						int days = scanner.nextInt();
+//						System.out.println("Enter New Password: ");
+//						String startDate = scanner.next();
+//						System.out.println(employeeDao.applyForLeave(userid, days, startDate));
 						break;
 					}
 					case 2:
-						employeeDao.cancelLeave(userid);
+//						employeeDao.cancelLeave(userid);
 						break;
 					case 3:
-						System.out.println(employeeDao.leaveDetails(userid));
+//						System.out.println(employeeDao.leaveDetails(userid));
 						break;
 					case 4:
-						System.out.println(employeeDao.leaveDetails(userid));
+//						System.out.println(employeeDao.leaveDetails(userid));
 						break;
 					case 5:
 						System.out.println("Enter New Name: ");

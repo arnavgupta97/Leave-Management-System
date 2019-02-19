@@ -2,7 +2,8 @@ var LeaveModel = Backbone.Model.extend({
 	defaults : {
 		id : null,
 		noOfLeavesApplied : null,
-		startDate : ""
+		startDate : "",
+		details : ""
 	},
 	url : '/messenger/webapi/employee/applyLeave'
 });
@@ -10,7 +11,7 @@ var LeaveModel = Backbone.Model.extend({
 var LeaveView = Backbone.View
 		.extend({
 			template : _
-					.template('<h2 id="header">APPLY FOR LEAVES</h2><form><input name="noOfLeavesApplied" placeholder="Number of Days" value="<%= noOfLeavesApplied %>" required><br><input type="date" name="startDate" placeholder="Start Date" value="<%= startDate %>" required><br><button>Save</button></form>'),
+					.template('<nav class="navbar navbar-inverse"><div class="container-fluid"><div class="navbar-header"><a class="navbar-brand">Employee</a></div><ul class="nav navbar-nav"><li><a href="EmployeePortal.html">Home</a></li><li><a href="updateDetails.html">Update Details</a></li><li class="active"><a href="">Apply Leave</a></li><li><a href="leaveDetails.html">Leave Details</a></li><li><a href="projectDetails.html">Project Details</a></li></ul><button type ="button" class = "btn btn-default" onclick="logout()">Log Out</button></div></nav><div class="col-md-4"></div><div class="col-md-4"><h2 id="header">APPLY FOR LEAVES</h2><form><input name="noOfLeavesApplied" class="form-control" placeholder="Number of Days" value="<%= noOfLeavesApplied %>" required><br><input type="date" name="startDate" class="form-control" placeholder="Start Date" value="<%= startDate %>" required><br><input type="text" name="details" class="form-control" placeholder="Details" value="<%= details %>" required><br><button class="btn btn-success">Save</button></form></div>'),
 			events : {
 				submit : 'save'
 			},
@@ -20,12 +21,14 @@ var LeaveView = Backbone.View
 				var noOfLeavesApplied = +this.$(
 						'input[name="noOfLeavesApplied"]').val();
 				var startDate = this.$('input[name="startDate"]').val();
+				var details = this.$('input[name="details"]').val();
 				this.model.save({
 					"id" : id,
-					"leave" : {
+					"leave" : [{
 						"noOfLeavesApplied" : noOfLeavesApplied,
-						"startDate" : startDate
-					}
+						"startDate" : startDate,
+						"details" : details
+					}]
 				});
 				alert("Leaves Have Been Applied Successfully");
 				this.model.toJSON();

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Employee {
@@ -21,8 +21,8 @@ public class Employee {
 	private String password;
 	private String email;
 
-	@OneToOne(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Leave leave;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Leave> leave;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Project> project = new HashSet<>();
@@ -78,11 +78,11 @@ public class Employee {
 		this.email = email;
 	}
 
-	public Leave getLeave() {
+	public Set<Leave> getLeave() {
 		return leave;
 	}
 
-	public void setLeave(Leave leave) {
+	public void setLeave(Set<Leave> leave) {
 		this.leave = leave;
 	}
 

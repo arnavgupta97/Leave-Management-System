@@ -13,7 +13,7 @@ var EmployeeModel = Backbone.Model.extend({
 var EmployeeView = Backbone.View
 		.extend({
 			template : _
-					.template('<h2 id="header">UPDATE YOUR DETAILS</h2><form><input name="name" placeholder="Name" value="<%=name %>" required><br><input name="password" placeholder="Password" value="<%= password %>" required><br><input name="contact" placeholder="Contact" value="<%= contact %>" required><br><input name="email" placeholder="Email" value="<%= email %>" required><br><button>Save</button></form>'),
+					.template('<nav class="navbar navbar-inverse"><div class="container-fluid"><div class="navbar-header"><a class="navbar-brand">Employee</a></div><ul class="nav navbar-nav"><li><a href="EmployeePortal.html">Home</a></li><li class="active"><a href="">Update Details</a></li><li><a href="leaveapply.html">Apply Leave</a></li><li><a href="leaveDetails.html">Leave Details</a></li><li><a href="projectDetails.html">Project Details</a></li></ul><button type ="button" class = "btn btn-default" onclick="logout()">Log Out</button></div></nav><div class="col-md-4"></div><div class="col-md-4"><h2 id="header">UPDATE YOUR DETAILS</h2><form><input type="text" name="name" class="form-control" placeholder="Name" value="<%=name %>" required><br><input type="password" name="password" class="form-control" placeholder="Password" value="<%= password %>" required><br><input type="number" name="contact" class="form-control" placeholder="Contact" value="<%= contact %>" required><br><input type="email" name="email" class="form-control" placeholder="Email" value="<%= email %>" required><br><button class="btn btn-success">Save</button></form></div>'),
 			events : {
 				submit : 'save'
 			},

@@ -4,11 +4,13 @@ var LeaveModel = Backbone.Model.extend({
 		noOfLeavesRemaining : null,
 		startDate : "",
 		status : "",
+		details : "",
+		employeeId :null
 	}
 });
 var LeaveCollection = Backbone.Collection.extend({
 	model : LeaveModel,
-	url : '/messenger/webapi/manager'
+	url : '/messenger/webapi/manager/getLeave'
 });
 
 var ViewAll = Backbone.View.extend({
@@ -20,11 +22,12 @@ var ViewAll = Backbone.View.extend({
 	},
 	render : function() {
 		this.collection.each(function(leave) {
+			if(leave.get("status") != "Cancelled"){
 			var leaveView = new LeaveView({
 				model : leave
 			});
 			this.$el.append(leaveView.render().el); // calling render method
-													// manually..
+		}											// manually..
 		}, this);
 		return this; // returning this for chaining..
 	}

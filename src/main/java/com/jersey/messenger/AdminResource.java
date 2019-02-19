@@ -23,6 +23,7 @@ public class AdminResource {
 	public List<Employee> getEmployees() {
 		AdminDao manager = new AdminDao();
 		List<Employee> employeeList = manager.getEmployeeList();
+		System.out.println(employeeList);
 		return employeeList;
 	}
 

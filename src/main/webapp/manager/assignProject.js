@@ -10,7 +10,7 @@ var ProjectModel = Backbone.Model.extend({
 var ProjectView = Backbone.View
 		.extend({
 			template : _
-					.template('<h2 id="header">ASSIGN PROJECT</h2><form><input name="projectmanagerid" placeholder="Manager ID" value="<%= projectmanagerid %>" required><br><input name="projectname" placeholder="Project Name" value="<%= projectname %>" required><br><input name="id" placeholder="Employee ID" value="<%= id %>" required><br><button>Save</button></form>'),
+					.template('<nav class="navbar navbar-inverse"><div class="container-fluid"><div class="navbar-header"><a class="navbar-brand">Manager</a></div><ul class="nav navbar-nav"><li><a href="ManagerPortal.html">Home</a></li><li class="active"><a href="">Assign Project</a></li><li><a href="listProject.html">List Projects</a></li><li><a href="listLeaves.html">List Leaves</a></li></ul><button type ="button" class = "btn btn-default" onclick="logout()">Log Out</button></div></nav><div class="col-md-4"></div><div class="col-md-4"><h2 id="header">ASSIGN PROJECT</h2><form><input type="number" name="projectmanagerid" class="form-control" placeholder="Manager ID" value="<%= projectmanagerid %>" required><br><input type="text" name="projectname" class="form-control" placeholder="Project Name" value="<%= projectname %>" required><br><input type="number" name="id" class="form-control" placeholder="Employee ID" value="<%= id %>" required><br><button class="btn btn-success">Save</button></form></div>'),
 			events : {
 				submit : 'save'
 			},

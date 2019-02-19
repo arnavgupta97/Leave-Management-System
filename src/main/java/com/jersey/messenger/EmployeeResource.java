@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -34,18 +33,26 @@ public class EmployeeResource {
 	public Leave applyLeaves(Employee empl) {
 		EmployeeDao employee = new EmployeeDao();
 		int id = empl.getId();
-		Leave leave = empl.getLeave();
+		Leave leave=null;
+		for(Leave l : empl.getLeave()) {
+			leave=l;
+			break;
+		}
 		int days = leave.getNoOfLeavesApplied();
 		String startDate = leave.getStartDate();
+		String details = leave.getDetails();
+		System.out.println(id);
 		System.out.println(leave);
-		return employee.applyForLeave(id, days, startDate);
+		return employee.applyForLeave(id, days, startDate,details);
 	}
 
 	@PUT
-	public Leave cancelLeaves(Employee e) {
+	@Path("cancel")
+	public Leave cancelLeaves(Leave leave) {
 		EmployeeDao employee = new EmployeeDao();
-		int id = e.getId();
-		return employee.cancelLeave(id);
+		int leaveId = leave.getLeaveId();
+		System.out.println(leaveId);
+		return employee.cancelLeave(leaveId);
 	}
 
     @PUT
